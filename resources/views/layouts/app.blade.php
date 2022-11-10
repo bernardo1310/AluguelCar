@@ -17,6 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    <img src="../imagem_site/banner.png" width="100%" height="500">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -74,6 +75,7 @@
 
         <main class="py-4">
             <div style="width:70%;margin:auto;">
+            <h2><a href="/contatos">contatos</a> - <a href="/aluguel">aluguel</a> -<a href="/carros">carros</a></h1>
                 @yield('content')
             </div>
         </main>

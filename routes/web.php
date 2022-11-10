@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContatosController;
 use App\Http\Controllers\CarrosController;
+use App\Http\Controllers\AluguelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('contatos/buscar/ns',[ContatosController::class,'buscar']);
 Route::resource('contatos',ContatosController::class);
 
 Route::resource('carros',CarrosController::class);
+
+Route::resource('aluguel',AluguelController::class);
 
 Auth::routes();
 

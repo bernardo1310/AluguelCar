@@ -1,0 +1,30 @@
+@extends('layouts.app')
+@section('content')
+<h2>novo carro</h2>
+    {{Form::open(['route'=>'aluguel.store','method'=>'POST'])}}
+
+        contato:
+        {{Form::text('idContato','',['class'=>'form-control','list'=>'listcontato','required'])}}
+
+        carro:
+        {{Form::text('idCarro','',['class'=>'form-control','list'=>'listcarro','required'])}}
+
+        <datalist id="listcontato">
+            @foreach($contatos as $contato)
+                <option value="{{$contato->id}}">{{$contato->nome}}</option>
+            @endforeach
+        </datalist>
+
+        <datalist id="listcarro">
+            @foreach($carros as $carro)
+                <option value="{{$carro->id}}">{{$carro->modelo}}</option>
+            @endforeach
+        </datalist>
+
+        {{Form::submit('enviar',['class'=>'btn btn-success'])}}
+
+        {{Form::button('cancelar' ,['onclick' => 'javascript:history.back()',
+        'class' => 'btn btn-danger'])}}
+
+    {{Form::close()}}
+@endsection
