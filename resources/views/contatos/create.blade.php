@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <h2>novo contato</h2>
-    {{Form::open(['route'=>'contatos.store','method'=>'POST'])}}
+    {{Form::open(['route'=>'contatos.store','method'=>'POST','enctype'=>'multipart/form-data'])}}
         nome;
         {{Form::text('nome','',['class'=>'form-control','required'])}}
         telefone;
         {{Form::text('telefone','',['class'=>'form-control','required'])}}
+        foto:
+        {{Form::file('foto',['class'=>'form-control'])}}
+        <hr>
 
         {{Form::submit('enviar',['class'=>'btn btn-success'])}}
 

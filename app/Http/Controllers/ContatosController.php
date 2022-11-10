@@ -20,6 +20,11 @@ class ContatosController extends Controller
         return view('contatos.index',array('busca'=>null,'contatos'=>$contatos));
     }
 
+    public function buscar(Request $request){
+        $contatos = contatos::where('nome','LIKE','%'.$request->input('busca').'%')->get();
+        return view('contatos.index',array('busca'=>$request->input('busca'),'contatos'=>$contatos));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,11 +48,21 @@ class ContatosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nome'=>'required',
+            'telefone'=>'required'
+        ]);
+
         if(Auth::check() && Auth::user()->isAdmin()){
             $contato = new Contatos;
             $contato->nome = $request->input('nome');
             $contato->telefone = $request->input('telefone');
             $contato->save();
+            if($request->hasFile('foto')){
+                $imagem = $request->file('foto');
+                $nomearq = md5($contato->id) . '.' . $imagem->getClientOriginalExtension();
+                $request->file('foto')->move(public_path('.\img\contatos'),$nomearq);
+            }
             return redirect('/contatos');
         }
         else{
@@ -94,11 +109,22 @@ class ContatosController extends Controller
      */
     public function update(Request $request,$id)
     {
+
+        $this->validate($request,[
+            'nome'=>'required',
+            'telefone'=>'required'
+        ]);
+
     if(Auth::check() && Auth::user()->isAdmin()){
         $contato = contatos::find($id) ;
         $contato->nome = $request->input('nome');
         $contato->telefone = $request->input('telefone');
         $contato->save();
+        if($request->hasFile('foto')){
+            $imagem = $request->file('foto');
+            $nomearq = md5($contato->id) . '.' . $imagem->getClientOriginalExtension();
+            $request->file('foto')->move(public_path('.\img\contatos'),$nomearq);
+        }
         return redirect('/contatos');
     }
     else{
@@ -112,11 +138,14 @@ class ContatosController extends Controller
      * @param  \App\Models\Contatos  $contatos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
     if(Auth::check() && Auth::user()->isAdmin()){
         $contato = contatos::find($id);
         $contato->delete();
+        if(isset($request->foto)){
+            unlink($request->foto);
+        }
         return redirect('/contatos');
     }
     else{
