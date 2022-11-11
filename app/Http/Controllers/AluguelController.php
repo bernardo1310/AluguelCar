@@ -48,16 +48,16 @@ class AluguelController extends Controller
     public function store(Request $request)
     {   
         $this->validate($request,[
-            'idcarro'=>'required',
+            'idCarro'=>'required',
             'idContato'=>'required'
         ]);
 
         if(Auth::check() && Auth::user()->isAdmin()){
             $alug = new aluguel;
-            $alug->idCarro = $request->input('idCarro');
-            $alug->idContato = $request->input('idContato');
+            $alug->idcarro = $request->input('idCarro');
+            $alug->idcontato = $request->input('idContato');
             $alug->save();
-            return redirect('\aluguel');
+            return redirect('/aluguel');
         } 
         else{
             return redirect('login');

@@ -38,4 +38,23 @@
     {{Form::close()}}
     @endif  
     <a class="btn btn-secondary" href="/contatos">Voltar</a>
+
+    <h2>alugueis</h2>
+    <hr>
+
+    <table class="table table-secondary table-striped">
+        <tr class="table-dark">
+            <td>#</td>
+            <td>contato</td>
+            <td>carro</td>
+        </tr>
+        @foreach($contato->aluguel as $alug)
+            <tr>
+                <td><a href="/aluguel/{{$alug->id}}">{{$alug->id}}</a></td>
+                <td>{{$alug->contato->nome}}</td>
+                <td>{{$alug->carro->modelo}}</td>
+            </tr>
+        @endforeach
+    </table>
+
 @endsection

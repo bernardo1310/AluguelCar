@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>novo carro</h2>
+<h2>novo aluguel</h2>
     {{Form::open(['route'=>'aluguel.store','method'=>'POST'])}}
 
         contato:

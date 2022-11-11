@@ -13,9 +13,9 @@
         </tr>
         @foreach($aluguel as $alug)
             <tr>
-                <td><a href="carros/{{$alug->id}}">{{$alug->id}}</a></td>
-                <td>{{$alug->contato}}</td>
-                <td>{{$alug->carro}}</td>
+                <td><a href="/aluguel/{{$alug->id}}">{{$alug->id}}</a></td>
+                <td>{{$alug->contato->nome}}</td>
+                <td>{{$alug->carro->modelo}}</td>
             </tr>
         @endforeach
     </table>

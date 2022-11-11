@@ -2,8 +2,8 @@
 @section('content')
     <h2>{{$alug->id}}</h2>
     <ul>
-        <li>carro: {{$alug->carro}}</li>
-        <li>contato: {{$alug->contato}}</li>
+        <li>carro: {{$alug->carro->modelo}}</li>
+        <li>contato: {{$alug->contato->nome}}</li>
     </ul>
     @if(Auth::check() && Auth::user()->isAdmin())
     {{Form::open(['route'=>['aluguel.destroy',$alug->id],'method'=>'DELETE'])}}

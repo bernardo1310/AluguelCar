@@ -3,10 +3,10 @@
     {{Form::open(['route'=>['aluguel.update',$alug->id],'method'=>'PUT'])}}
 
         contato:
-        {{Form::text('idContato','$alug->contato',['class'=>'form-control','list'=>'listcontato','required'])}}
+        {{Form::text('idContato',$alug->contato->id,['class'=>'form-control','list'=>'listcontato','required'])}}
 
         carro:
-        {{Form::text('idCarro','$alug->carro',['class'=>'form-control','list'=>'listcarro','required'])}}
+        {{Form::text('idCarro',$alug->carro->id,['class'=>'form-control','list'=>'listcarro','required'])}}
 
         <datalist id="listcontato">
             @foreach($contatos as $contato)
