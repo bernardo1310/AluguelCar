@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h3>contatos</h3>
+    <h1 style="color: white;">Contato</h1>
     {{Form::open(['url'=>'contatos/buscar/ns','method'=>'GET'])}}
         <div class="row">
                 @if ((Auth::check()) && (Auth::user()->isAdmin()))

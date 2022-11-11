@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2>novo carro</h2>
+    <h2 style="color:white;">novo carro</h2>
     {{Form::open(['route'=>'carros.store','method'=>'POST'])}}
         modelo:
         {{Form::text('modelo','',['class'=>'form-control','required'])}}

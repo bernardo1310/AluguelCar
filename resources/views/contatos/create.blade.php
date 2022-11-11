@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2>novo contato</h2>
+    <h2 style="color: white;">Novo contato</h2>
     {{Form::open(['route'=>'contatos.store','method'=>'POST','enctype'=>'multipart/form-data'])}}
         nome;
         {{Form::text('nome','',['class'=>'form-control','required'])}}
